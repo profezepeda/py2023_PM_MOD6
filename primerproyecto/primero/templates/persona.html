@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}
+<h1>{{ persona.nombre }}</h1>
+{% endblock %}
+{% block contenido %}
+<p>
+  Hola {{ persona.nombre }} {{ persona.apellido }}, cómo estás?
+</p>
+{% endblock %}

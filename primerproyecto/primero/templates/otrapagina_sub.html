@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}
+<h1>Otra Página (Jinj2)</h1>
+{% endblock %}
+{% block contenido %}
+<p>
+  {% lorem 1 b random %}
+</p>
+<h2>{{ persona.nombre }} {{ persona.apellido }}</h2>
+{% if persona.edad >= 18 %}
+  <p>Es mayor de edad</p>
+{% else %}
+  <p>Es menor de edad</p>
+{% endif %}
+<h2>Lista de personas</h2>
+<table class="table" id="tabla">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Apellido</th>
+      <th>Edad</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for p in personas %}
+      <tr>
+        <td>{{ p.nombre|capfirst }}</td>
+        <td>{{ p.apellido|capfirst }}</td>
+        <td>{{ p.edad }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<form>
+  {% csrf_token %}
+  <input type="text">
+</form>
+
+<p>
+  {{ contenido|truncatewords:4 }}
+</p>
+
+
+<a href="{% url 'index' %}">Principal</a>
+
+{% endblock %}
