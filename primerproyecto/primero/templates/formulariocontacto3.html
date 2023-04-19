@@ -12,8 +12,16 @@
       <div class="row">
 
         {% for campo in formulario %}
-          <div class="col-12 form-group">
-            {{ campo.label_tag }}
+          <div class="
+            {% if campo.name == "nombre" or campo.name == "apellido" %}
+              col-5
+            {% elif campo.name == "edad" %}
+              col-2
+            {% else %}
+              col-12
+            {% endif %}
+          form-group">
+            <label for="edad" class="form-label">{{ campo.label }}</label>
             {{ campo }}
             {{ campo.errors }}
           </div>
@@ -27,14 +35,12 @@
       </div>
     </div>
   </form>
+{% endblock %}
 
+{% block javascript %}
 <script>
-
   function validarFormulario()  {
     return false;
   }
-
 </script>
-
-
 {% endblock %}
