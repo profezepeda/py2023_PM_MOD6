@@ -19,7 +19,7 @@ from django.urls import path
 from django.views.generic import TemplateView
 
 from primero.views import index_principal, otra_pagina, pagina_persona
-from primero.views import Pagina4View
+from primero.views import Pagina4View, FormularioContactoView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -27,5 +27,6 @@ urlpatterns = [
     path('pagina2/', otra_pagina, name="otra"),
     path('pagina3/', TemplateView.as_view(template_name="otrapagina_sub.html"), name='otra2'),
     path('pagina4/', Pagina4View.as_view(), name='otra4'),
-    path('persona/<int:id>', pagina_persona, name='persona')
+    path('persona/<int:id>', pagina_persona, name='persona'),
+    path("formulariocontacto", FormularioContactoView.as_view(), name="formulariocontacto"),
 ]

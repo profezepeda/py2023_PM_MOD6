@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.views.generic import TemplateView
 
+from primero.forms.formulariocontacto import FormularioContactoForm
+
 lista_personas = [
     { "id": 1, "nombre": "maria", "apellido": "gomez", "edad": 25 },
     { "id": 2, "nombre": "josé", "apellido": "gonzalez", "edad": 25 },
@@ -33,6 +35,20 @@ def otra_pagina(request):
     }
     return render(request, 'otrapagina_sub.html', 
         {"persona": persona, "personas": lista_personas, "contenido": contenido})
+
+# def formulario_contacto(request):
+#     formulario = FormularioContactoForm()
+#     context = { "formulario": formulario }
+#     return render(request, 'formulariocontacto2.html', { "context": context})
+
+class FormularioContactoView(TemplateView):
+    template_name = "formulariocontacto3.html"
+
+    def get_context_data(self, **kwargs):
+        context = super(FormularioContactoView, self).get_context_data(**kwargs)
+        context["formulario"] = FormularioContactoForm()
+        return context
+
 
 class Pagina4View(TemplateView):
     template_name = "otrapagina_sub.html"

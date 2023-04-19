@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}
+<h1>Formulario de Contacto</h1>
+{% endblock %}
+{% block contenido %}
+
+  <form method="post" action="/formulariocontacto" onsubmit="return validarFormulario()">
+    {% csrf_token %}
+    <div class="content">
+      <div class="row">
+
+        {% for campo in formulario %}
+          <div class="col-12 form-group">
+            {{ campo.label_tag }}
+            {{ campo }}
+            {{ campo.errors }}
+          </div>
+        {% endfor %}
+
+      </div>
+      <div class="row">
+        <div class="col-12 form-group">
+          <button type="submit" class="btn btn-primary">Enviar</button>
+        </div>
+      </div>
+    </div>
+  </form>
+
+<script>
+
+  function validarFormulario()  {
+    return false;
+  }
+
+</script>
+
+
+{% endblock %}
