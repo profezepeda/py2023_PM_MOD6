@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block titulo %}Usuarios{% endblock titulo %}
+{% block contenido %}
+
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-12">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Usuarios</h5>
+          <p class="card-text">Esta es una lista de los usuarios del sistema.</p>
+          <div class="container">
+            {% for usuario in usuarios %}
+            <div class="row">
+              <div class="col-1">{{ usuario.id }}</div>
+              <div class="col-3">{{ usuario.username }}</div>
+              <div class="col-3">{{ usuario.email }}</div>
+              <div class="col-5">{{ usuario.first_name }} {{ usuario.last_name }}</div>
+            </div>
+            {% endfor %}
+          </div>
+            
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock contenido %}
