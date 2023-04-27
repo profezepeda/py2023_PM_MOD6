@@ -43,3 +43,6 @@ def loginusuario(request):
     else:
       form.errors["usuario"] = "Usuario no válido"
   return render(request, "registration/login.html", {'form':form})
+
+from django.contrib.auth.models import Group, User
+
